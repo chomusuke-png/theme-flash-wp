@@ -28,8 +28,8 @@ jQuery(document).ready(function ($) {
 
         // Añadir
         wrapper.on('click', '.add-item', function () {
-            wrapper.find('.custom-repeater-list').append(`
-                <li class=".custom-repeater-item">
+            wrapper.find('custom-repeater-list').append(`
+                <li class="custom-repeater-item">
                     <input type="text" class="title-field" placeholder="Título del sitio">
 
                     <select class="icon-select">
@@ -43,7 +43,7 @@ jQuery(document).ready(function ($) {
                     <input type="text" class="url-field" placeholder="URL">
 
                     <span class="drag-handle">☰</span>
-                    <button type="button" class="button remove-social">Eliminar</button>
+                    <button type="button" class="button remove-item">Eliminar</button>
                 </li>
 
             `);
