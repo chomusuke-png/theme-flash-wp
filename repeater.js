@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
         });
 
         // Añadir
-        wrapper.on('click', '.add-social', function () {
+        wrapper.on('click', '.add-item', function () {
             wrapper.find('.custom-repeater-list').append(`
                 <li class=".custom-repeater-item">
                     <input type="text" class="title-field" placeholder="Título del sitio">
@@ -52,7 +52,7 @@ jQuery(document).ready(function ($) {
         });
 
         // Eliminar
-        wrapper.on('click', '.remove-social', function () {
+        wrapper.on('click', '.remove-item', function () {
             $(this).closest('.custom-repeater-item').remove();
             updateField(wrapper);
         });
