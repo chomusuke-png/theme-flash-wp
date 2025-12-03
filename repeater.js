@@ -28,7 +28,7 @@ jQuery(document).ready(function ($) {
 
         // Añadir
         wrapper.on('click', '.add-item', function () {
-            wrapper.find('custom-repeater-list').append(`
+            wrapper.find('.custom-repeater-list').append(`
                 <li class="custom-repeater-item">
                     <input type="text" class="title-field" placeholder="Título del sitio">
 
