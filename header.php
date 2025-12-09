@@ -11,20 +11,30 @@
 <body <?php body_class(); ?>>
 
     <div class="top-header">
-        <div id="datetime"></div>
+    
+        <div class="top-left-area">
+            <div id="datetime"></div>
+        </div>
 
-        <div class="social-icons">
-            <?php
-            $items = json_decode(get_theme_mod('social_links_data'), true);
+        <div class="top-center-area">
+            <?php if (is_active_sidebar('top_header_widget')): ?>
+                <?php dynamic_sidebar('top_header_widget'); ?>
+            <?php endif; ?>
+        </div>
 
-            if (!empty($items)):
-                foreach ($items as $item):
-                    $icon = esc_attr($item['icon']);
-                    $url = esc_url($item['url']);
-                    echo "<a href='$url' target='_blank' rel='noopener'><i class='$icon'></i></a>";
-                endforeach;
-            endif;
-            ?>
+        <div class="top-right-area">
+            <div class="social-icons">
+                <?php
+                $items = json_decode(get_theme_mod('social_links_data'), true);
+                if (!empty($items)):
+                    foreach ($items as $item):
+                        $icon = esc_attr($item['icon']);
+                        $url = esc_url($item['url']);
+                        echo "<a href='$url' target='_blank' rel='noopener'><i class='$icon'></i></a>";
+                    endforeach;
+                endif;
+                ?>
+            </div>
         </div>
 
     </div>

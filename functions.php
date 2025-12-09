@@ -212,6 +212,18 @@ function theme_register_sidebars() {
         'after_title' => '</h3>',
     ]);
 
+    // ... (después de los otros register_sidebar)
+
+    register_sidebar([
+        'name'          => 'Barra Superior (Header)',
+        'id'            => 'top_header_widget',
+        'description'   => 'Widget al centro de la barra roja superior (ideal para texto corto o anuncios).',
+        'before_widget' => '<div id="%1$s" class="top-widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<span class="screen-reader-text">', // Ocultamos el título visualmente
+        'after_title'   => '</span>',
+    ]);
+
     register_sidebar([
         'name' => 'Footer 1',
         'id' => 'footer_1',
