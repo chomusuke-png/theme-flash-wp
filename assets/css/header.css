@@ -7,38 +7,67 @@
     padding: 8px 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     font-size: 13px;
     z-index: 1;
-    position: relative;
+    position: relative; /* Referencia para el centro absoluto */
+    min-height: 40px;
 }
 
-/* Áreas Laterales: Escritorio (flex: 1) */
+/* Áreas Laterales */
 .top-left-area,
 .top-right-area {
-    flex: 1;
     display: flex;
     align-items: center;
+    z-index: 2;
 }
 
-.top-left-area { justify-content: flex-start; }
-.top-right-area { justify-content: flex-end; }
-
-/* Área Central */
+/* Área Central: CENTRADO ABSOLUTO */
 .top-center-area {
-    flex: 0 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centro matemático exacto */
+    z-index: 1;
+    width: max-content;
+    max-width: 40%;
     text-align: center;
-    padding: 0 15px;
+    white-space: nowrap;
 }
 
-/* Estilos del Widget */
-.top-widget-content {
+/* Estilos del Widget (Fondo y Padding Nuevo) */
+.top-widget-content,
+.top-widget {
     color: white;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 0.5px;
+    line-height: 1;
+    
+    /* --- LO NUEVO --- */
+    background: white; /* Fondo negro al 15% (muy sutil) */
+    padding: 2px 4px; /* 2px arriba/abajo (tu pedido), 8px lados */
+    border-radius: 4px; /* Bordes redondeados */
+    display: inline-block; /* Ajusta el fondo al tamaño del texto */
+    /* ---------------- */
 }
-.top-widget-content a { color: white; text-decoration: underline; }
+
+.top-widget-content a, 
+.top-widget a { 
+    color: white; 
+    text-decoration: none; /* Quitamos subrayado para que se vea más limpio con fondo */
+}
+
+/* FIX GTRANSLATE: Banderas siempre visibles */
+.top-widget-content img,
+.top-widget img,
+a.glink img {
+    opacity: 1 !important;
+    filter: none !important;
+    transition: none !important;
+    vertical-align: middle; /* Alineación perfecta con el texto */
+}
 
 /* Redes Sociales */
 .top-header .social-icons a {
@@ -46,6 +75,8 @@
     margin-left: 12px;
     font-size: 16px;
     transition: opacity 0.2s;
+    display: inline-block;
+    vertical-align: middle;
 }
 .top-header .social-icons a:hover { opacity: 0.7; }
 
@@ -65,7 +96,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    flex: 1; /* Ocupa el espacio disponible */
+    flex: 1;
 }
 
 .custom-logo {
@@ -76,7 +107,7 @@
 
 .title-box h1 {
     font-size: 22px;
-    color: #122d86; /* Azul Flash */
+    color: #122d86;
     margin-bottom: 3px;
     font-weight: 700;
     line-height: 1.1;
@@ -95,7 +126,7 @@
     display: none;
     font-size: 24px;
     cursor: pointer;
-    color: #122d86; /* Azul corporativo */
+    color: #122d86;
     padding: 5px;
     border-radius: 4px;
     transition: background 0.2s;
@@ -125,16 +156,16 @@
 .mobile-menu ul li a:hover {
     color: #d40000;
     background: #fff9f9;
-    padding-left: 25px; /* Animación bonita al hover */
+    padding-left: 25px;
 }
 
 /* =========================================
-   4. RESPONSIVE DESIGN (LA MAGIA AQUÍ)
+   4. RESPONSIVE DESIGN
    ========================================= */
 
 /* --- TABLET (hasta 900px) --- */
 @media (max-width: 900px) {
-    .navbar { display: none; } /* Ocultar menú escritorio */
+    .navbar { display: none; }
     .hamburger { display: block; margin-left: auto; }
     .custom-logo { width: 120px; }
 }
@@ -142,25 +173,23 @@
 /* --- MÓVIL (hasta 600px) --- */
 @media (max-width: 600px) {
     
-    /* 1. TOP HEADER: DISEÑO EN 2 FILAS */
+    /* 1. TOP HEADER: Reset de Absoluto a Bloque apilado */
     .top-header {
-        flex-wrap: wrap; /* Permitir saltos de línea */
+        flex-wrap: wrap;
         padding: 8px 15px;
-        gap: 0; /* Controlamos el espacio manual */
+        gap: 0;
     }
 
     /* Fila 1 Izquierda: Fecha */
     .top-left-area {
-        flex: 0 0 50%;
         width: 50%;
         order: 1;
-        font-size: 11px; /* Un poco más chico para que quepa */
+        font-size: 11px;
         opacity: 0.9;
     }
 
     /* Fila 1 Derecha: Iconos */
     .top-right-area {
-        flex: 0 0 50%;
         width: 50%;
         order: 2;
         justify-content: flex-end;
@@ -169,25 +198,31 @@
 
     /* Fila 2 Centro: Widget (Full width) */
     .top-center-area {
-        flex: 0 0 100%;
+        /* RESET del posicionamiento absoluto */
+        position: static; 
+        transform: none;
+        
         width: 100%;
+        max-width: 100%;
         order: 3;
         margin-top: 6px;
         padding-top: 6px;
-        border-top: 1px solid rgba(255,255,255,0.15); /* Línea divisoria sutil */
+        border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    
+    /* Mantenemos el fondo pero ajustamos si es necesario */
+    .top-widget-content, .top-widget {
+        display: inline-block; 
+        /* En móvil quizás quieras que no tenga fondo o sea diferente, 
+           pero por defecto se ve bien como "botón" */
     }
     
     /* 2. MAIN HEADER */
     .main-header { padding: 10px 15px; }
-    
-    /* Logo más compacto */
     .custom-logo { width: 100px; }
-
-    /* Ajuste de Título */
     .title-box h1 { font-size: 18px; }
-    .title-box p { display: none; } /* Ocultamos descripción para limpiar */
-
-    /* Hamburguesa más grande (Táctil) */
+    .title-box p { display: none; }
+    
     .hamburger {
         font-size: 26px;
         padding: 8px;

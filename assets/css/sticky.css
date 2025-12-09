@@ -1,29 +1,20 @@
-/* STICKY HEADER version desktop only */
+/* STICKY HEADER - Versión CSS Moderna (Mejor rendimiento) */
 @media (min-width: 769px) {
-    .main-header.sticky {
-        position: fixed;
+    .main-header {
+        position: sticky; /* Magia nativa */
         top: 0;
-        width: 100%;
         z-index: 99999;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        /* Al ser sticky, no necesitamos 'fixed' ni placeholders */
     }
-
-    /* Ajuste para admin bar de WordPress */
-    .admin-bar .main-header.sticky {
+    
+    /* Ajuste para cuando estás logueado en WordPress (Barra negra arriba) */
+    .admin-bar .main-header {
         top: 32px;
     }
 
     @media screen and (max-width: 782px) {
-        .admin-bar .main-header.sticky {
+        .admin-bar .main-header {
             top: 46px;
         }
-    }
-}
-
-/* En móvil no es sticky */
-@media (max-width: 768px) {
-    .main-header {
-        position: relative !important;
-        box-shadow: none !important;
     }
 }

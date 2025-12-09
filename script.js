@@ -16,12 +16,12 @@ updateDateTime();
 
 
 // =============== STICKY HEADER (solo desktop) ===============
-const mainHeader = document.getElementById("mainHeader");
+/* const mainHeader = document.getElementById("mainHeader");
 const topHeader = document.querySelector(".top-header");
-const triggerPoint = topHeader.offsetHeight;
+const triggerPoint = topHeader.offsetHeight; */
 
 // Placeholder para evitar salto
-const placeholder = document.createElement("div");
+/* const placeholder = document.createElement("div");
 placeholder.style.display = "none";
 placeholder.style.height = mainHeader.offsetHeight + "px";
 mainHeader.after(placeholder);
@@ -36,7 +36,7 @@ window.addEventListener("scroll", () => {
             placeholder.style.display = "none";
         }
     }
-});
+}); */
 
 
 // =============== MENÚ HAMBURGUESA ===============
