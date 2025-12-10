@@ -116,18 +116,6 @@
                                     </span>
                                 </div>
 
-                                <!-- ETIQUETAS -->
-                                <?php
-                                $tags = get_the_tags();
-                                if (!empty($tags)):
-                                    ?>
-                                    <div class="tags">
-                                        <?php foreach ($tags as $tag): ?>
-                                            <span><?php echo esc_html($tag->name); ?></span>
-                                        <?php endforeach; ?>
-                                    </div>
-                                <?php endif; ?>
-
                             </div>
                         </article>
 
