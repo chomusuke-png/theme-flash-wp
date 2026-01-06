@@ -1,0 +1,51 @@
+/* Wrapper para centrar el contenido y limitar ancho */
+.error-404-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+.error-404-content {
+    padding: 60px 20px;
+}
+
+/* Títulos */
+.error-title {
+    font-size: 6rem;
+    color: #d40000;
+    margin-bottom: 10px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.error-subtitle {
+    font-size: 2rem;
+    color: #122d86;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Texto y Buscador */
+.error-text p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Botón de regreso */
+.btn-back-home {
+    display: inline-block;
+    background: #122d86;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.btn-back-home:hover {
+    background: #0d1f61;
+    transform: translateY(-2px);
+}

@@ -31,6 +31,12 @@ function theme_enqueue_assets() {
     // Pages
     wp_enqueue_style('single', $css_pages . 'single.css');
     wp_enqueue_style('page',   $css_pages . 'page.css');
+    if (is_404()) {
+        wp_enqueue_style('error-404', $css_pages . '404.css');
+    }
+    if (is_archive() || is_search()) {
+        wp_enqueue_style('archive',   $css_pages . 'archive.css');
+    }
 
     // Main Style
     wp_enqueue_style('main', get_stylesheet_uri());

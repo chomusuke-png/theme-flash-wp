@@ -1,0 +1,26 @@
+/* Encabezado de Archivos (Categorías/Tags) */
+.archive-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.archive-title {
+    font-size: 2rem;
+    color: #122d86;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Prefijo "Categoría:" más pequeño o estilizado si se desea */
+.archive-title span {
+    color: #555;
+    font-weight: 400;
+}
+
+.archive-description {
+    font-size: 1.05rem;
+    color: #666;
+    line-height: 1.6;
+    margin-top: 10px;
+}
