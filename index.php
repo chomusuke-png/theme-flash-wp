@@ -2,7 +2,6 @@
 
 <?php if ( is_home() && !is_paged() ) : ?>
 
-<!-- NOTICIAS DESTACADAS (GRID) -->
 <section class="news-grid">
     <?php
     $categoria_id = get_theme_mod('grid_category_id');
@@ -13,7 +12,6 @@
         'order'          => 'DESC'
     ];
 
-    // Si el usuario eligió una categoría desde el customizer
     if (!empty($categoria_id)) {
         $args['cat'] = $categoria_id;
     }
@@ -32,20 +30,11 @@
             elseif ($pos == 3) $area = 'left2';
             elseif ($pos == 4) $area = 'right1';
             elseif ($pos == 5) $area = 'right2';
-            ?>
+            else               $area = '';
 
-            <a href="<?php the_permalink(); ?>" class="news-item <?php echo $area; ?>">
-                <?php if (has_post_thumbnail()): ?>
-                    <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>">
-                <?php endif; ?>
+            // Llamada modular al grid pasando el argumento 'area'
+            get_template_part('template-parts/content', 'grid', ['area' => $area]);
 
-                <div class="overlay">
-                    <h2><?php the_title(); ?></h2>
-                    <span class="date"><?php echo get_the_date(); ?></span>
-                </div>
-            </a>
-
-            <?php
         endwhile;
     endif;
 
@@ -56,70 +45,20 @@
 <?php endif; ?>
 
 
-<!-- CONTENEDOR CON SIDEBAR -->
 <div class="sidebar-container">
     <div class="main-content">
 
         <?php if (get_theme_mod('show_blog_list', true)): ?>
 
-            <!-- LISTADO DE TODAS LAS NOTICIAS -->
             <section class="news-list">
                 <?php
                 if (have_posts()):
                     while (have_posts()):
                         the_post();
-                        ?>
                         
-                        <article class="news-item">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php if (has_post_thumbnail()): ?>
-                                    <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title_attribute(); ?>">
-                                <?php else: ?>
-                                    <img src="https://via.placeholder.com/400x250/d40000/ffffff?text=<?php echo urlencode(get_the_title()); ?>"
-                                        alt="<?php the_title_attribute(); ?>">
-                                <?php endif; ?>
-                            </a>
+                        // Llamada modular a la tarjeta de lista
+                        get_template_part('template-parts/content', 'list');
 
-                            <div class="news-content">
-
-                                <!-- CATEGORÍAS -->
-                                <?php
-                                $categories = get_the_category();
-                                if (!empty($categories)):
-                                    ?>
-                                    <div class="category">
-                                        <?php foreach ($categories as $cat): ?>
-                                            <span class="post-category"><?php echo esc_html($cat->name); ?></span>
-                                        <?php endforeach; ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <!-- TÍTULO -->
-                                <h2 class="news-title">
-                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                </h2>
-
-                                <!-- EXTRACTO -->
-                                <div class="news-excerpt">
-                                    <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
-                                </div>
-
-                                <!-- META -->
-                                <div class="meta">
-                                    <span class="author">
-                                        <i class="fas fa-user"></i>
-                                        <?php the_author(); ?>
-                                    </span>
-                                    <span class="date">
-                                        <i class="fas fa-calendar"></i>
-                                        <?php echo get_the_date('d M Y'); ?>
-                                    </span>
-                                </div>
-
-                            </div>
-                        </article>
-
-                        <?php
                     endwhile;
                 else:
                     ?>
@@ -129,7 +68,6 @@
                 ?>
             </section>
 
-            <!-- PAGINACIÓN -->
             <div class="pagination">
                 <?php
                 echo paginate_links([
@@ -147,7 +85,6 @@
 
     </div>
 
-    <!-- SIDEBAR -->
     <?php get_sidebar(); ?>
 </div>
 

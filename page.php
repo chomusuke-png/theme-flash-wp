@@ -8,28 +8,10 @@
         if (have_posts()):
             while (have_posts()):
                 the_post();
-                ?>
+                
+                // Contenido modular
+                get_template_part('template-parts/content', 'page');
 
-                <article class="page-article">
-
-                    <!-- TÍTULO -->
-                    <h1 class="page-title"><?php the_title(); ?></h1>
-
-                    <!-- IMAGEN DESTACADA -->
-                    <?php if (has_post_thumbnail()): ?>
-                        <div class="page-featured">
-                            <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title_attribute(); ?>">
-                        </div>
-                    <?php endif; ?>
-
-                    <!-- CONTENIDO -->
-                    <div class="page-text">
-                        <?php the_content(); ?>
-                    </div>
-
-                </article>
-
-            <?php
             endwhile;
         else:
             ?>
@@ -38,7 +20,6 @@
 
     </main>
 
-    <!-- SIDEBAR OPCIONAL -->
     <?php get_sidebar(); ?>
 
 </div>
