@@ -1,27 +1,40 @@
 <?php
 
 function theme_enqueue_assets() {
-    $css = get_template_directory_uri() . '/assets/css/';
+    $css_base    = get_template_directory_uri() . '/assets/css/base/';
+    $css_layout  = get_template_directory_uri() . '/assets/css/layout/';
+    $css_modules = get_template_directory_uri() . '/assets/css/modules/';
+    $css_pages   = get_template_directory_uri() . '/assets/css/pages/';
 
-    wp_enqueue_style('reset', $css . 'reset.css');
-    wp_enqueue_style('globals', $css . 'globals.css');
-    wp_enqueue_style('header', $css . 'header.css');
-    wp_enqueue_style('navbar', $css . 'navbar.css');
-    wp_enqueue_style('sticky', $css . 'sticky.css');
-    wp_enqueue_style('grid', $css . 'grid.css');
-    wp_enqueue_style('posts-list', $css . 'posts-list.css');
-    wp_enqueue_style('pagination', $css . 'pagination.css');
-    wp_enqueue_style('button-top', $css . 'button-top.css');
-    wp_enqueue_style('footer', $css . 'footer.css');
-    wp_enqueue_style('single', $css . 'single.css');
-    wp_enqueue_style('related', $css . 'related.css');
-    wp_enqueue_style('sidebar', $css . 'sidebar.css');
-    wp_enqueue_style('responsive', $css . 'responsive.css');
-    wp_enqueue_style('page', $css . 'page.css');
+    // 1. BASE
+    wp_enqueue_style('reset',   $css_base . 'reset.css');
+    wp_enqueue_style('globals', $css_base . 'globals.css');
 
+    // 2. LAYOUT
+    wp_enqueue_style('grid',    $css_layout . 'grid.css');
+    wp_enqueue_style('header',  $css_layout . 'header.css');
+    wp_enqueue_style('navbar',  $css_layout . 'navbar.css');
+    wp_enqueue_style('sidebar', $css_layout . 'sidebar.css');
+    wp_enqueue_style('footer',  $css_layout . 'footer.css');
+
+    // 3. MODULES
+    wp_enqueue_style('sticky',     $css_modules . 'sticky.css');
+    wp_enqueue_style('posts-list', $css_modules . 'posts-list.css');
+    wp_enqueue_style('pagination', $css_modules . 'pagination.css');
+    wp_enqueue_style('button-top', $css_modules . 'button-top.css');
+    wp_enqueue_style('related',    $css_modules . 'related.css');
+
+    // 4. RESPONSIVE (Utility global)
+    wp_enqueue_style('responsive', $css_base . 'responsive.css');
+
+    // 5. PAGES (Especificidad alta)
+    wp_enqueue_style('single', $css_pages . 'single.css');
+    wp_enqueue_style('page',   $css_pages . 'page.css');
+
+    // 6. MAIN STYLE (Raíz - style.css obligatorio de WP)
     wp_enqueue_style('main', get_stylesheet_uri());
 
-    // Scripts
+    // SCRIPTS
     wp_enqueue_script(
         "theme-js",
         get_theme_file_uri("/script.js"),
