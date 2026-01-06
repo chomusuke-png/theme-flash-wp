@@ -67,8 +67,8 @@ function theme_customize_register($wp_customize) {
 
             public function enqueue() {
                 wp_enqueue_script('jquery-ui-sortable');
-                wp_enqueue_script('custom-repeater-js', get_template_directory_uri() . '/repeater.js', ['jquery', 'jquery-ui-sortable'], false, true);
-                wp_enqueue_style('custom-repeater-css', get_template_directory_uri() . '/repeater.css');
+                wp_enqueue_script('custom-repeater-js', get_template_directory_uri() . '/assets/js/repeater.js', ['jquery', 'jquery-ui-sortable'], false, true);
+                wp_enqueue_style('custom-repeater-css', get_template_directory_uri() . '/assets/css/modules/repeater.css');
             }
 
             public function render_content() {
