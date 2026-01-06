@@ -10,13 +10,14 @@
     border-radius: 50%;
     font-size: 20px;
     cursor: pointer;
-    display: none;
-    transition: 0.3s;
-    display: flex;
+    display: none; 
+    transition: background 0.3s, transform 0.2s;
     align-items: center;
     justify-content: center;
+    z-index: 9999;
 }
 
 #btnTop:hover {
     opacity: 0.85;
+    transform: translateY(-3px);
 }
