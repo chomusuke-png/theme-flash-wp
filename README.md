@@ -1,6 +1,6 @@
 # Manual de Usuario: HalalFlash Theme
 
-**Versión del Tema:** 5.4
+**Versión del Tema:** 1.5.4
 **Descripción:** Plantilla personalizada para sitio de noticias HalalFlash.
 **Autor:** Zumito
 
